@@ -1,27 +1,26 @@
-// 1. Tải các module cần thiết
 const express = require('express');
-const dotenv = require('dotenv'); 
+// Import hàm kết nối DB từ file db.js trong thư mục config
+const connectDB = require('./config/db'); 
+const userRoutes = require('./routes/user');
 
-// Tải biến môi trường từ file .env vào process.env (nếu có)
-dotenv.config();
+// 1. KHỞI TẠO KẾT NỐI DB TRƯỚC
+// Hàm này sẽ cố gắng kết nối DB. Nếu thất bại, ứng dụng sẽ thoát (exit 1)
+connectDB();
 
-// 2. Khởi tạo ứng dụng Express
 const app = express();
 
-// Middleware: Sử dụng express.json() để parse (phân tích) các yêu cầu JSON gửi đến
+// Middleware để phân tích cú pháp JSON từ body request (rất quan trọng cho POST)
 app.use(express.json());
 
-// Định nghĩa một route cơ bản để kiểm tra server
+// Định nghĩa Routes
+app.use('/api/users', require('./routes/user'));
+
+// Route cơ bản kiểm tra server
 app.get('/', (req, res) => {
-    res.send('Server đang chạy tốt. Chào mừng đến với API Backend!');
+    res.send(`Server đang chạy trên cổng 5000.`);
 });
 
-// 3. Thiết lập PORT
-// Lấy PORT từ biến môi trường (ví dụ: trong file .env), nếu không có thì dùng mặc định là 3000
-const PORT = process.env.PORT || 3000;
+const PORT = 5000; 
 
-// 4. Khởi động server và lắng nghe kết nối
-app.listen(PORT, () => {
-    console.log(`Server đang chạy trên cổng ${PORT}`);
-    console.log(`Mở http://localhost:${PORT} để kiểm tra.`);
-});
+// 2. LẮNG NGHE ở cổng 5000 để giữ server chạy
+app.listen(PORT, () => console.log(`Server Express đang chạy và kết nối DB thành công. Cổng: ${PORT}`));
