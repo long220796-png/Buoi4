@@ -11,14 +11,15 @@ function AddUser({ onUserAdded }) {
       alert('Vui lòng nhập cả tên và email');
       return;
     }
-    try {
-      const newUser = { name, email };
-      const response = await axios.post("http://localhost:3000/users", newUser);
-      alert('Thêm user thành công!');
-      setName('');
-      setEmail('');
-      onUserAdded(response.data);
-    } catch (error) {
+  try {
+  const newUser = { name, email };
+  const response = await axios.post("http://192.168.1.8:5000/api/users", newUser);
+
+  alert('Thêm user thành công!');
+  setName(''); // 
+  setEmail('');
+  onUserAdded(response.data);
+} catch (error) { //
       console.error('Lỗi khi thêm user:', error);
       alert('Có lỗi xảy ra khi thêm user.');
     }
