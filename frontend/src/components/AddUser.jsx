@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// -----------------------------------------------------------------
 // ⚠️ QUAN TRỌNG: SỬA DÒNG NÀY ⚠️
-// Dán link ngrok (hoặc IP chung Wi-Fi) của Sinh viên 1 vào đây
-const API_URL = "https://abc-123.ngrok-free.app/api/users";
-// -----------------------------------------------------------------
+const API_URL = "http://192.168.1.2:3000/api/users"
 
 
 function AddUser({ onUserAdded }) {
