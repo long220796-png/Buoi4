@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = "http://192.168.1.8:5000/api/users"; // ⚠️ SỬA DÒNG NÀY
+const API_URL = "http://192.168.1.2:3000/api/users"; // ⚠️ SỬA DÒNG NÀY
 
 function EditUser({ user, onUpdateDone }) {
   const [name, setName] = useState('');

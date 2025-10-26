@@ -13,7 +13,7 @@ function AddUser({ onUserAdded }) {
     }
   try {
   const newUser = { name, email };
-  const response = await axios.post("http://192.168.1.8:5000/api/users", newUser);
+  const response = await axios.post("http://192.168.1.2:3000/api/users", newUser);
 
   alert('Thêm user thành công!');
   setName(''); // 
