@@ -12,14 +12,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Vui lòng thêm email'],
         unique: true
-    },
-    // DÒNG NÀY SẼ TẠO XUNG ĐỘT
-    updatedAt: {
-        type: Date,
-        default: Date.now
     }
 }, {
-    // Tự động thêm trường createdAt và updatedAt
+    // Tự động thêm trường createdAt và updatedAt (Đây là cách chuẩn)
     timestamps: true 
 });
 
