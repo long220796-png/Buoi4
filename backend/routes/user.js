@@ -1,20 +1,19 @@
 const express = require('express');
-const {
-    getUsers,
-    createUser
-} = require('../controllers/userController'); // Import các hàm xử lý từ Controller
-
-// Sử dụng Router của Express
 const router = express.Router();
+// 💡 Lưu ý: Ta không cần import userController hay authController ở đây
+// vì các API phức tạp đã được chuyển sang routes/auth.js
 
-// Định nghĩa Routes
+// ------------------------------------------------------------------
+// API /api/users (Thường chỉ để cho các chức năng Admin)
+// ------------------------------------------------------------------
 
-// Lắng nghe request GET trên đường dẫn gốc ('/')
-// Kết quả là: GET /api/users
-router.get('/', getUsers);
+// Đây là một route giả lập. Trong ứng dụng thực tế,
+// router này sẽ cần các hàm controller.
 
-// Lắng nghe request POST trên đường dẫn gốc ('/')
-// Kết quả là: POST /api/users
-router.post('/', createUser);
+// router.post('/', userController.createUser); // -> Hàm này đã bị xóa khỏi userController.js
+// router.get('/', userController.getUsers); // -> Hàm này đã được chuyển sang routes/auth.js
+
+// Tạm thời bỏ trống file này để server không bị lỗi do thiếu callback
+// vì các chức năng chính đã nằm trong routes/auth.js
 
 module.exports = router;
